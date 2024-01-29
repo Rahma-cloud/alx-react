@@ -10,5 +10,12 @@
   
   #count {
     font-weight: bold;
+    margin-left: 10px;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   

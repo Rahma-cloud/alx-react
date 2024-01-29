@@ -1,5 +1,4 @@
 const path = require('path');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: './js/dashboard_main.js',
@@ -23,7 +22,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new OptimizeCssAssetsPlugin(),
-  ],
 };

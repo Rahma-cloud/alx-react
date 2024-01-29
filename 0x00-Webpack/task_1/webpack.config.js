@@ -5,7 +5,7 @@ module.exports = {
     index: path.resolve(__dirname, './js/dashboard_main.js')
   },
   output: {
-    filename: '.bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
   mode: 'production'

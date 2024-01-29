@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
+import '/alx-react/0x00-Webpack/task_2/css/main.css'
 
 let count = 0;
 

@@ -8,10 +8,10 @@
     "html-webpack-plugin": "^5.6.0",
     "style-loader": "^3.3.4",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "image-webpack-loader": "^8.1.0"
   },
   "dependencies": {
-    "image-webpack-loader": "^8.1.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21"
   },

@@ -1,4 +1,3 @@
-// js/dashboard_main.js
 import $ from 'jquery';
 import _ from 'lodash';
 

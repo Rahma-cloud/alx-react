@@ -1,15 +1,12 @@
-/* task_2/css/main.css */
+#logo {
+  width: 200px;
+  height: 200px;
+  background: url('../assets/holberton-logo.jpg');
+  background-size: 200px 200px;
+}
 
 #count {
   display: inline;
   font-weight: bold;
-  margin-left: 0px;
-  }
-  
-#logo {
-  width: 200px;
-  height: 200px;
-  background: url('../assets/holberton-logo.jpg') no-repeat center center;
-  background-size: cover;
+  margin: 0px;
 }
-  

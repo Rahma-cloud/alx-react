@@ -1,8 +1,9 @@
 /* task_2/css/main.css */
 
 #count {
+    display: inline;
     font-weight: bold;
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 0px;
   }
   
   #logo {

@@ -1,5 +1,5 @@
 {
-  "name": "task_1",
+  "name": "task_2",
   "version": "1.0.0",
   "main": "webpack.config.js",
   "devDependencies": {
@@ -12,6 +12,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "image-wepack-loader": "^8.1.0",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21"
   },

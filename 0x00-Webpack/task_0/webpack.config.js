@@ -1,6 +1,6 @@
 const path = require('path');
 
-mosule.exports = {
+module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'main.js',

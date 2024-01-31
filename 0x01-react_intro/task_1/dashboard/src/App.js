@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import holbertonlogo from './holbertonlogo.jpg'
-import { getFullYear, getFooterCopy } from './utils';
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
       </div>
       <div className="App-footer">
         <hr/ >
-        <p>{getFooterCopy(true)} - {getFullYear()}</p>
+        <p>Copyright 2020 - holberton School</p>
       </div>
     </div>
   );

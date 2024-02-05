@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
-import NotificationItem from '../Notifications/NotificationItem';
+import { getLatestNotification } from "../utils/utils";
 
 function Notifications({ notifications }) {
     return (
@@ -15,15 +15,9 @@ function Notifications({ notifications }) {
         </button>
         <p>Here is the list of notifications</p>
         <ul>
-          {notifications &&
-            notifications.map((notification, index) => (
-            <NotificationItem
-            key={index}
-            type={notification.type}
-            value={notification.value}
-            html={notification.html}
-        />
-          ))}
+        <li data="default">New course available</li>
+        <li data="urgent">New resume available</li>
+        <li data="urgent" dangerouslySetInnerHTML={{ __html: getLatestNotification() }}></li>
         </ul>
       </div>
     );

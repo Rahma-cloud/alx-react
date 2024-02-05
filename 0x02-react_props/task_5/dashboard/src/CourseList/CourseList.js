@@ -4,7 +4,7 @@ import './CourseList.css';
 import PropTypes from 'prop-types'
 import CourseShape from './CourseShape';
 
-const CourseList = () => {
+const CourseList = ({ listCourses }) => {
   return (
     <table id="CourseList">
       <thead>

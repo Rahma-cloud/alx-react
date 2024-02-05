@@ -36,8 +36,10 @@
     "prop-types": "^15.8.1"
   },
   "jest": {
+    "moduleFileExtensions": ["js", "jsx", "json", "node", "png"],
     "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "\\.(png)$": "<rootDir>/path/to/empty-mock.js"
     }
   }
 }

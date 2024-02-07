@@ -21,7 +21,7 @@ const listNotifications = [
 ];
 class App extends React.Component {
   render() {
-    const { listNotifications, listCourses, isLoggedIn } = this.props;
+    const { isLoggedIn } = this.props;
     
     return (
       <>

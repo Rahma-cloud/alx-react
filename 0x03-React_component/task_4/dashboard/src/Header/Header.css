@@ -1,0 +1,9 @@
+.App-header {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+    font-size: 18px;
+}

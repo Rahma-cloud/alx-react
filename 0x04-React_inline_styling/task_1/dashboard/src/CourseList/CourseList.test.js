@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import CourseList from './CourseList';
 import CourseListRow from './CourseListRow';
-import PropTypes from 'prop-types';
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -11,14 +10,20 @@ const listCourses = [
 ];
 
 describe('CourseList Component tests', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+    wrapper = shallow(<CourseList listCourses={listCourses}/>);
+  });
   it('renders CourseList component without crashing', () => {
     const courseList = shallow(<CourseList />);
     expect(courseList).toBeDefined();
   });
 
-  it('renders 5 different rows', () => {
+  it('renders different rows based on the listCourses length', () => {
     const courseList = shallow(<CourseList listCourses={listCourses} />);
-    expect(courseList.find('CourseListRow')).toHaveLength(5);
+    expect(courseList.find('CourseListRow')).toHaveLength(listCourses.length);
   });
   it('renders correctly when listCourses is an empty array', () => {
     const courseList = shallow(<CourseList listCourses={[]} />);

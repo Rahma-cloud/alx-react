@@ -1,15 +1,13 @@
 import React, { Component }from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, css } from 'aphrodite';
 
-const styles = StyleSheet.create({
-  row: {
-    backgroundColor: '#f5f5f5ab'
-  },
-  header: {
-    backgroundColor: '#deb5b545'
-  }
-})
+const rowStyle = {
+    backgroundColor: '#f5f5f5ab',
+};
+
+const headerStyle = {
+  backgroundColor: '#deb5b545',
+};
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   if (isHeader) {
@@ -19,7 +17,7 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
           <th colSpan={2}>{textFirstCell}</th>
         ) : (
           <>
-            <th className={css(styles.header)}>{textFirstCell}</th>
+            <th>{textFirstCell}</th>
             <th>{textSecondCell}</th>
           </>
         )}
@@ -28,7 +26,7 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   } else {
     return (
       <tr>
-        <td className={css(styles.row)}>{textFirstCell}</td>
+        <td>{textFirstCell}</td>
         <td>{textSecondCell}</td>
       </tr>
     );

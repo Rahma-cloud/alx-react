@@ -19,14 +19,19 @@ class BodySectionWithMarginBottom extends React.Component {
 const styles = StyleSheet.create({
     bodySectionWithMargin: {
         marginBottom: '40px',
-        marginLeft: '60px',
     },
     
 });
 
 BodySectionWithMarginBottom.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.node,
+    children: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.element
+    ])
 };
 
+BodySectionWithMarginBottom. defaultProps = {
+	children: <React.Fragment />
+};
 export default BodySectionWithMarginBottom;

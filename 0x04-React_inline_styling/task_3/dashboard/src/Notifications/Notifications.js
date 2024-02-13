@@ -42,7 +42,7 @@ class Notifications extends React.Component {
               {listNotifications.length === 0 ? (
                 <p>No new notification for now</p>
               ) : (
-                <ul>
+                <ul className={css(styles.ul)}>
                   {listNotifications.map(({ id, html, type, value }) => (
                     <NotificationItem
                       key={id}
@@ -73,15 +73,17 @@ const styles = StyleSheet.create({
     padding: '1em',
     top: '10px',
     width: '95vw',
-},
-
-'li[data="default"]': {
-    color: 'blue',
-},
-
-'li[data="urgent"]': {
-    color: 'red',
-},
+    zIndex: '100',
+    '@media (max-width: 900px)': {
+      width: '100%',
+      padding: '0px',
+      fontSize: 20,
+      position: 'relative',
+      right: 0,
+      left: 0,
+      border: 'none',
+    }
+  },
 
 'notification-header': {
     display: 'flex',
@@ -90,7 +92,33 @@ const styles = StyleSheet.create({
   
 menuItem: {
     textAlign: 'right',
+    position: 'relative',
+    zIndex: 100,
+    float: 'right',
+    backgroundColor: '#fff8f8',
+    ':hover': {
+      cursor: 'pointer',
+      animationName: {
+        '0%': { transform: 'translateY(0px)' },
+        '33%': { transform: 'translateY(-5px)'},
+        '66%': { transform: 'translateY(5px)'},
+        '100%': { transform: 'translateY(0px)'}
+      },
+      animationDuration: '1s, 0.5s',
+      animationIterationCount: '3'
+    }
 },
+ul: {
+  '@media (max-width: 900px)': {
+    padding: 0
+  }
+},
+button: {
+  '@media (max-width: 900px)': {
+    position: 'relative',
+    float: 'right',
+  }
+}
 
 });
 

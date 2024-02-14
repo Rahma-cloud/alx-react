@@ -9,45 +9,6 @@ import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import { StyleSheet, css } from 'aphrodite';
 import { getLatestNotification } from '../utils/utils';
-
-const styles = StyleSheet.create({
-  app: {
-    height: '100vh',
-    maxWidth: '100vw',
-    position: 'relative',
-    fontFamily: 'Arial, Helvetica, sans-serif',
-  },
-  headingSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '10px',
-  },
-  hr: {
-    borderTop: '2px solid red',
-  },
-  bodySection: {
-    padding: '10px',
-    marginLeft: '100px'
-  },
-  appLogo: {
-    height: '200px',
-    width: '200px',
-    animationName: {
-      from: {
-        transform: 'rotate(0deg)',
-      },
-      to: {
-        transform: 'rotate(360deg)',
-      },
-    },
-    animationDuration: '1s',
-    animationIterationCount: 'infinite',
-  },
-  h1: {
-    color: 'red',
-  },
-});
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -112,6 +73,45 @@ class App extends React.Component {
     );
   }
 };
+
+
+const styles = StyleSheet.create({
+  app: {
+    height: '100vh',
+    maxWidth: '100vw',
+    position: 'relative',
+    fontFamily: 'Arial, Helvetica, sans-serif',
+  },
+  headingSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '10px',
+  },
+  hr: {
+    borderTop: '2px solid red',
+  },
+  bodySection: {
+    padding: '10px',
+    marginLeft: '100px'
+  },
+  appLogo: {
+    height: '200px',
+    width: '200px',
+    animationName: {
+      from: {
+        transform: 'rotate(0deg)',
+      },
+      to: {
+        transform: 'rotate(360deg)',
+      },
+    },
+    animationDuration: '1s',
+    animationIterationCount: 'infinite',
+  },
+  h1: {
+    color: 'red',
+  },
+});
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,

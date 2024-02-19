@@ -14,6 +14,7 @@ class App extends React.Component {
     super(props);
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
   listCourses = [
@@ -43,13 +44,26 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.handleKeyPress);
   }
 
+  handleDisplayDrawer() {
+		this.setState({ displayDrawer: true });
+	}
+
+	handleHideDrawer() {
+		this.setState({ displayDrawer: false });
+	}
+
   render() {
     const { listNotifications, listCourses, isLoggedIn } = this.props;
     return (
       <>
         <div className={css(styles.app)}>
           <div className={css(styles.headingSection)}>
-            <Notifications listNotifications={listNotifications} />
+            <Notifications
+              listNotifications={this.listNotifications}
+						  displayDrawer={this.state.displayDrawer}
+						  handleDisplayDrawer={this.handleDisplayDrawer}
+						  handleHideDrawer={this.handleHideDrawer} 
+            />
             <Header />
           </div>
           <hr className={css(styles.hr)} />

@@ -20,5 +20,17 @@ describe("Login", () => {
         expect(wrapper.find('input')).toHaveLength(2);
         expect(wrapper.find('label')).toHaveLength(2);
     });
-    
+    it('disables the submit button by default', () => {
+      const login = shallow(<Login />);
+      const submitButton = login.find('input[type="submit"]');
+      expect(submitButton.prop('disabled')).toBe(true);
+    });
+  
+    it('enables the submit button after changing email and password values', () => {
+      const login = shallow(<Login />);
+      login.find('#email').simulate('change', { target: { value: 'test@example.com' } });
+      login.find('#password').simulate('change', { target: { value: 'password123' } });
+      const submitButton = login.find('input[type="submit"]');
+      expect(submitButton.prop('disabled')).toBe(false);
+    });
 });

@@ -22,12 +22,30 @@ class Notifications extends React.Component {
     console.log(`Notification ${id} has been marked as read`);
   }
   render() {
-    const { displayDrawer, listNotifications } = this.props;
+    const { 
+      displayDrawer,
+      listNotifications,
+      handleDisplayDrawer,
+      handleHideDrawer,
+    } = this.props;
     return (
       <React.Fragment>
         {displayDrawer ? (
-          <div className="'flex-area'">
-            <div className={css(styles.menuItem)}>
+          <div className={
+                  displayDrawer
+                    ? css(styles.notificationsContainer, styles.drawerOpen)
+                    : css(styles.notificationsContainer)
+                }
+          >
+            <div className={
+						        displayDrawer
+							      ? css(styles.none)
+							      : css(styles.menuItem, styles.hover)
+					        }
+					        onClick={() => {
+						          handleDisplayDrawer();
+					        }}
+            >
               <p>Your notifications</p>
             </div>
             <div className={css(styles.notifications)}>
@@ -42,17 +60,29 @@ class Notifications extends React.Component {
               {listNotifications.length === 0 ? (
                 <p>No new notification for now</p>
               ) : (
-                <ul>
-                  {listNotifications.map(({ id, html, type, value }) => (
-                    <NotificationItem
-                      key={id}
-                      type={type}
-                      value={value}
-                      html={html}
-                      markAsRead={() => this.markAsRead(id)}
-                    />
-                  ))}
-                </ul>
+                <><ul>
+                    {listNotifications.map(({id,html,type,value}) => (
+                      <NotificationItem
+                        key={id}
+                        type={type}
+                        value={value}
+                        html={html}
+                        markAsRead={() => this.markAsRead(id)} />
+                    ))}
+                  </ul><button
+                    className={css(styles.button)}
+                    aria-label='Close'
+                    onClick={() => {
+                      console.log('Close button has been clicked');
+                      handleHideDrawer();
+                    } }
+                  >
+                      <img
+                        src={closeIcon}
+                        alt='close icon'
+                        width='10px'
+                        height='10px' />
+                    </button></>
               )}
             </div>
           </div>
@@ -83,6 +113,22 @@ const styles = StyleSheet.create({
     color: 'red',
 },
 
+notificationsContainer: {
+  display: 'flex',
+  flexDirection: 'column',
+  marginTop: '1rem',
+  marginRight: '1rem',
+  gridRow: '1',
+},
+hover: {
+  ':hover': {
+    cursor: 'pointer',
+    animationName: [bounceKeyframes, opacityKeyframes],
+    animationDuration: '0.5s, 1s',
+    animationIterationCount: '3',
+  },
+},
+
 'notification-header': {
     display: 'flex',
     justifyContent: 'space-between',
@@ -90,19 +136,53 @@ const styles = StyleSheet.create({
   
 menuItem: {
     textAlign: 'right',
+    marginRight: '.5rem'
+},
+
+noBorder: {
+  '@media (max-width: 900px)': {
+    border: 'none',
+  },
+},
+none: {
+  display: 'none',
+  '@media (max-width: 900px)': {
+    display: 'none',
+  },
+},
+button: {
+  position: 'absolute',
+  top: '3.5rem',
+  right: '2.2rem',
+  '@media (max-width: 900px)': {
+    top: '10.5rem',
+    right: '14.2rem',
+  },
+},
+center: {
+  '@media (max-width: 900px)': {
+    marginLeft: '4vw',
+    fontSize: '20px',
+  },
+},
+drawerOpen: {
+  '@media (max-width: 900px)': {
+    gridRow: '2',
+  },
 },
 
 });
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.arrayOf(NotificationItemShape)
+  listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+	handleHideDrawer: PropTypes.func,
 
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
-  listNotifications: [],
 };
 
 export default Notifications;

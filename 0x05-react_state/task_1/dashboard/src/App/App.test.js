@@ -7,6 +7,14 @@ import Notifications from "../Notifications/Notifications";
 import CourseList from "../CourseList/CourseList";
 import { shallow } from "enzyme";
 
+beforeEach(() => {
+	StyleSheetTestUtils.suppressStyleInjection();
+});
+
+afterEach(() => {
+	StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
 describe("App tests", () => {
   it("renders without crashing", () => {
     const component = shallow(<App />);
@@ -59,4 +67,25 @@ describe("App tests", () => {
     expect(window.alert).toHaveBeenCalledWith('Logging you out');
   });
 
+});
+describe('testing state of App.js', () => {
+	it('displayDrawer initial value should be set to false', () => {
+		const wrapper = mount(<App />);
+
+		expect(wrapper.state().displayDrawer).toBe(false);
+	});
+
+	it('should set displayDrawer to true after calling handleDisplayDrawer', () => {
+		const wrapper = shallow(<App />);
+		wrapper.instance().handleDisplayDrawer();
+
+		expect(wrapper.state().displayDrawer).toBe(true);
+	});
+
+	it('should set displayDrawer to false after calling handleHideDrawer', () => {
+		const wrapper = shallow(<App />);
+		wrapper.instance().handleHideDrawer();
+
+		expect(wrapper.state().displayDrawer).toBe(false);
+	});
 });

@@ -5,6 +5,14 @@ import Notifications from './Notifications';
 import { getLatestNotification } from '../utils/utils';
 import { StyleSheetTestUtils } from 'aphrodite';
 
+beforeEach(() => {
+	StyleSheetTestUtils.suppressStyleInjection();
+});
+
+afterEach(() => {
+	StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
 describe("Testing the <Notifications /> Component", () => {
   
   let wrapper;
@@ -129,4 +137,45 @@ describe("Testing the notification class Component re-rendering", () => {
     expect(wrapper.find("NotificationItem").at(1).props().value).toEqual("New course available2");
     expect(wrapper.find("NotificationItem").length).toBe(4);
   });
+
+  it('should call handleDisplayDrawer when menu item clicked', () => {
+		const listNotifications = [
+			{ id: 1, type: 'default', value: 'New course available' },
+			{ id: 2, type: 'urgent', value: 'New resume available' },
+			{ id: 3, type: 'default', html: getLatestNotification() },
+		];
+		const mockFn = jest.fn();
+		const wrapper = shallow(
+			<Notifications
+				listNotifications={listNotifications}
+				handleDisplayDrawer={mockFn}
+			/>
+		);
+		const spy = jest.spyOn(wrapper.instance().props, 'handleDisplayDrawer');
+
+		wrapper.find('.menuItem_1ba569s-o_O-hover_1f7q9uc').simulate('click');
+		expect(spy).toBeCalled();
+		spy.mockRestore();
+	});
+
+	it('should call handleHideDrawer when close button is clicked', () => {
+		const listNotifications = [
+			{ id: 1, type: 'default', value: 'New course available' },
+			{ id: 2, type: 'urgent', value: 'New resume available' },
+			{ id: 3, type: 'default', html: getLatestNotification() },
+		];
+		const mockFn = jest.fn();
+		const wrapper = shallow(
+			<Notifications
+				displayDrawer={true}
+				listNotifications={listNotifications}
+				handleHideDrawer={mockFn}
+			/>
+		);
+		const spy = jest.spyOn(wrapper.instance().props, 'handleHideDrawer');
+		wrapper.find('button').simulate('click');
+
+		expect(spy).toBeCalled();
+		spy.mockRestore();
+	});
 });

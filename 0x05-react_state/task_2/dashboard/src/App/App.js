@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, css } from 'aphrodite';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import CourseList from '../CourseList/CourseList';
-import PropTypes from 'prop-types';
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import { getLatestNotification } from '../utils/utils';
@@ -22,32 +21,29 @@ const listNotifications = [
   { id: 2, type: "urgent", value: "New resume available" },
   { id: 3, type: "urgent", html: getLatestNotification() },
 ];
-const App = () => {
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-    isLoggedIn: false,
-  });
 
-  const logOut = () => {
-    setUser({
+class App extends React.Component {
+  state = {
+    displayDrawer: false,
+    user: {
       email: '',
       password: '',
       isLoggedIn: false,
-    });
+    },
   };
 
   handleDisplayDrawer = () => {
     this.setState({
       displayDrawer: true,
     });
-  }
+  };
 
   handleHideDrawer = () => {
     this.setState({
       displayDrawer: false,
     });
-  }
+  };
+
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
   }
@@ -67,7 +63,7 @@ const App = () => {
   render() {
     // Use the AppProvider to wrap your components
     return (
-      <AppProvider value={{ user, logOut }}>
+      <AppProvider value={{ user: this.state.user, logOut: this.logOut }}>
         <div className={css(styles.container, styles.small)}>
           <div className="heading-section">
             <Notifications listNotifications={listNotifications} />
@@ -91,24 +87,23 @@ const App = () => {
         </div>
       </AppProvider>
     );
-  };
+  }
 }
 
 const styles = StyleSheet.create({
-	container: {
-		display: 'flex',
-		justifyContent: 'space-between',
-	},
-	hr: {
-		borderTop: '2px solid red',
-	},
-	small: {
-		'@media (max-width: 900px)': {
-			display: 'grid',
-			justifyContent: 'center',
-		},
-	},
-
+  container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  hr: {
+    borderTop: '2px solid red',
+  },
+  small: {
+    '@media (max-width: 900px)': {
+      display: 'grid',
+      justifyContent: 'center',
+    },
+  },
 });
 
 export default App;

@@ -47,13 +47,6 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.logOut !== prevProps.logOut) {
-      document.removeEventListener('keydown', this.handleKeyDown);
-      document.addEventListener('keydown', this.handleKeyDown);
-    }
-  }
-
   handleKeyDown = (event) => {
     const { logOut } = this.props;
     if (event.ctrlKey && event.key === 'h') {
@@ -66,7 +59,7 @@ class App extends React.Component {
     const { listNotifications, listCourses, isLoggedIn } = this.props;
     return (
       <>
-      <div className="App">
+      <div className={css(styles.container, styles.small)}>
       <div className="heading-section">
         <Notifications listNotifications={listNotifications}
         displayDrawer={this.state.displayDrawer}
@@ -102,5 +95,22 @@ App.defaultProps = {
   isLoggedIn: false,
   logOut: () => {},
 };
+
+const styles = StyleSheet.create({
+	container: {
+		display: 'flex',
+		justifyContent: 'space-between',
+	},
+	hr: {
+		borderTop: '2px solid red',
+	},
+	small: {
+		'@media (max-width: 900px)': {
+			display: 'grid',
+			justifyContent: 'center',
+		},
+	},
+
+});
 
 export default App;

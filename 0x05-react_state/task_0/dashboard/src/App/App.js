@@ -61,7 +61,8 @@ class App extends React.Component {
       <>
       <div className={css(styles.container, styles.small)}>
       <div className="heading-section">
-        <Notifications listNotifications={listNotifications}
+        <Notifications
+        {...this.props}
         displayDrawer={this.state.displayDrawer}
         handleDisplayDrawer={this.handleDisplayDrawer}
         handleHideDrawer={this.handleHideDrawer} />

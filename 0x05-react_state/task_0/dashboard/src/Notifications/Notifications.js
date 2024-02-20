@@ -18,9 +18,15 @@ class Notifications extends React.Component {
     );
   }
 
+  handleDisplayDrawer = () => {
+    const { handleDisplayDrawer } = this.props;
+    handleDisplayDrawer();
+  }
+
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
+
   render() {
     const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer } = this.props;
     return (
@@ -57,7 +63,7 @@ class Notifications extends React.Component {
             </div>
           </div>
         ) : (
-          <div className="menuItem" onClick={handleDisplayDrawer}>
+          <div className="menuItem" onClick={this.handleDisplayDrawer}>
             <p>Your notifications</p>
           </div>
         )}

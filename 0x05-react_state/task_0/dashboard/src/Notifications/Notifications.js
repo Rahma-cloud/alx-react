@@ -40,7 +40,7 @@ class Notifications extends React.Component {
               <button
                 style={{ color: "#3a3a3a", fontWeight: "bold", background: "none", border: "none", fontSize: "10px", position: "absolute", right: "2px", top: "2px", cursor: "pointer" }}
                 aria-label="Close"
-                onClick={handleHideDrawer}
+                onClick={this.props.handleHideDrawer}
               >
                 <img src={closeIcon} alt="closeIcon" width="10px" />
               </button>

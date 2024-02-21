@@ -1,8 +1,9 @@
 import { List } from 'immutable';
 
-export default function getListObject(array) {
+export function getListObject(array) {
     return List(array);
 }
-export default function addElementToList(list, element) {
+
+export function addElementToList(list, element) {
     return list.push(element);
 }

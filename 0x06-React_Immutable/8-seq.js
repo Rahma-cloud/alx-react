@@ -1,6 +1,6 @@
-import { seq } from 'immutable';
+import { Seq } from 'immutable';
 
-export default printBestStudents(object) {
+export default function printBestStudents(object) {
     const seq = Seq(object);
     
     const filtered = seq.filter((student) => {
@@ -19,6 +19,6 @@ export default printBestStudents(object) {
         JSObject[key].lastName = capFirstLetter(JSObject[key].lastName);
         return JSObject[key];
     });
-
+    
     console.log(JSObject);
 }

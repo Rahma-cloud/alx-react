@@ -1,9 +1,7 @@
-import { List } from 'immutable';
+import { List } from './node_modules/immutable/dist/immutable';
 
-export function getListObject(array) {
-    return List(array);
-}
+const  getListObject = (array) => List(array);
+const addElementToList= (list, element) => list.push(element)
 
-export function addElementToList(list, element) {
-    return list.push(element);
-}
+export function getListObject();
+export function addElementToList();

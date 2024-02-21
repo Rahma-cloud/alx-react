@@ -1,4 +1,4 @@
-import { List } from './node_modules/immutable/dist/immutable';
+import {List} from 'immutable';
 
 export function getListObject(array) {
     return List(array);

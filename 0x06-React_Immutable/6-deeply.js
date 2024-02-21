@@ -1,5 +1,5 @@
-import { List, Map } from './node_modules/immutable/dist/immutable';
+import { Map } from 'immutable';
 
 export default function mergeDeeplyElements(page1, page2) {
-    return List 
+    return Map(page1).mergeDeep(Map(page2));
 }
